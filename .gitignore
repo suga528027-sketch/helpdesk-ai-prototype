@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+db.sqlite3
+*.db
+
+# Node
+node_modules/
+dist/
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Images/Data
+uploads/
+data/rca/
+*.log
