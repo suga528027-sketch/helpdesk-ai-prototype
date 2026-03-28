@@ -23,6 +23,7 @@ export default function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/new-ticket" element={<Home />} />
               <Route path="/result" element={<TicketResult />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/analytics" element={<Analytics />} />
@@ -34,7 +35,7 @@ export default function App() {
 
           {/* Footer */}
           <footer className="text-center py-8 text-slate-700 text-xs border-t border-surface-800/50 mt-8">
-            HelpdeskAI — NASSCOM Hackathon 2025 · Built with FastAPI + React + RAG + Claude AI
+            SolveWise AI · Advanced Agentic Helpdesk · Built with FastAPI + React + RAG
           </footer>
 
           {/* AI Chatbot Floating Component */}

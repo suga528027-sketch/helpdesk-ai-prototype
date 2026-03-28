@@ -667,3 +667,6 @@ Confirmed phishing attempt. Blocked sender domain at mail gateway. Collected and
 TKT-8083,Phishing email received from fake IT team,I received suspicious email from [REDACTED EMAIL] asking for my password. This is not our normal IT email. Could be phishing.,Security,Medium,resolved,"[RAG-Based Resolution]
 [RAG-Based Resolution]
 Confirmed phishing attempt. Blocked sender domain at mail gateway. Collected and deleted all instances of email from mailboxes. Sent awareness advisory to all staff.",,,
+TKT-2952,Phishing email received from fake IT team,I received suspicious email from [REDACTED EMAIL] asking for my password. This is not our normal IT email. Could be phishing.,Security,Medium,resolved,"[RAG-Based Resolution]
+[RAG-Based Resolution]
+Confirmed phishing attempt. Blocked sender domain at mail gateway. Collected and deleted all instances of email from mailboxes. Sent awareness advisory to all staff.",,,

@@ -1,4 +1,4 @@
-# HelpdeskAI: Advanced Agentic IT Resolution System 🚀
+# SolveWise AI: Advanced Agentic IT Resolution System 🚀
 
 An enterprise-grade, multi-agent AI helpdesk system designed for automated classification, technical diagnostic, and proactive resolution.
 
@@ -36,3 +36,6 @@ An enterprise-grade, multi-agent AI helpdesk system designed for automated class
    ```
 
 3. **Try the Chatbot**: Click the blue bubble in the bottom corner to ask AI about your live ticket status!
+
+---
+Built with 💜 by SolveWise AI

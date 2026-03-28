@@ -35,12 +35,12 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
           {/* Logo */}
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-violet-600 rounded-lg flex items-center justify-center shadow-lg">
-              <User size={16} className="text-white" />
+            <div className="w-9 h-9 bg-gradient-to-br from-primary-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg border border-white/10">
+              <img src="/src/assets/logo.png" alt="SolveWise AI" className="w-6 h-6 object-contain" onError={(e) => e.target.style.display='none'} />
+              <User size={18} className="text-white absolute" />
             </div>
             <div>
-              <span className="text-lg font-bold gradient-text">HelpdeskAI</span>
-              <div className="text-[10px] text-slate-500 font-medium -mt-0.5 leading-none">NASSCOM 2025</div>
+              <span className="text-xl font-black gradient-text tracking-tight">SolveWise AI</span>
             </div>
           </div>
 

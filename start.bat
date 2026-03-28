@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   HelpdeskAI -- NASSCOM Hackathon Startup
+echo   SolveWise AI -- Advanced Agentic IT Support
 echo ============================================
 echo.
 

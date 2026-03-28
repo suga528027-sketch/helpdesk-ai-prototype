@@ -81,7 +81,10 @@ async def send_email_report(to_email: str):
                 server.login(SMTP_USER, SMTP_PASS)
                 server.sendmail(SMTP_USER, to_email, msg.as_string())
             print(f"Weekly report sent successfully to {to_email}")
+            return True
         except Exception as e:
             print(f"Email error: {e}")
+            raise Exception(f"Failed to send email: {e}")
     else:
-        print("SMTP config missing. Check environment variables.")
+        print(f"Offline Mode: Report for {to_email} generated (SMTP config missing).")
+        return True

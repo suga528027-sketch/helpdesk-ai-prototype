@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Send, Bot, User, Zap, Shield, AlertCircle, TicketIcon, Sparkles, ChevronRight, Image as ImageIcon, X } from 'lucide-react'
-import { submitTicket } from '../services/api'
+import { submitTicket, submitTicketWithImage } from '../services/api'
 import toast from 'react-hot-toast'
 
 const EXAMPLE_TICKETS = [
@@ -83,17 +83,30 @@ export default function Home() {
     }
     setLoading(true)
     try {
-      const formData = new FormData()
-      formData.append('title', form.title)
-      formData.append('description', form.description)
+      let res;
       if (image) {
+        const formData = new FormData()
+        formData.append('title', form.title)
+        formData.append('description', form.description)
         formData.append('image', image)
+        // Note: submitTicketWithImage in api.js handles the multipart header
+        res = await submitTicketWithImage(formData)
+      } else {
+        // Send as JSON object for /ticket/submit
+        res = await submitTicket({
+          title: form.title,
+          description: form.description
+        })
       }
-      const res = await submitTicket(formData)
       toast.success('Ticket analyzed! Redirecting...')
       navigate('/result', { state: { result: res.data } })
     } catch (err) {
-      toast.error(err.response?.data?.detail || 'Backend not available. Please start the FastAPI server.')
+      console.error('Submission error:', err)
+      const errorDetail = err.response?.data?.detail
+      const errorMessage = typeof errorDetail === 'string' 
+        ? errorDetail 
+        : (Array.isArray(errorDetail) ? errorDetail[0]?.msg : 'Backend not available. Please start the FastAPI server.')
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
