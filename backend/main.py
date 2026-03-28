@@ -95,6 +95,14 @@ def iso_now() -> str:
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
 
+@app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "service": "SolveWise AI: Intelligent Resolution Engine",
+        "docs": "/docs"
+    }
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "time": iso_now()}
