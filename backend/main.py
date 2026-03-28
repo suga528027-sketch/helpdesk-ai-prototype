@@ -52,15 +52,16 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"DB Init Failed: {e}")
 
-    try:
-        success = build_index()
-        print(f"RAG Index: {'OK' if success else 'FAIL'}")
-    except Exception as e:
-        print(f"RAG Index Error: {e}")
+    # ─── QuickStart ────────────────────────────────────────────────────────
+    # Run heavy operations in background tasks so Render proxy is happy immediately
     
-    # Start background scheduler
+    # 1. Start background monitor
     asyncio.create_task(monitor_major_incidents())
     print("Incident monitor started.")
+
+    # 2. Build RAG index in background (avoids 502 Bad Gateway)
+    asyncio.create_task(asyncio.to_thread(build_index))
+    print("Intelligence loading in background...")
     
     yield
     print("Shutting down.")
