@@ -13,6 +13,10 @@ An enterprise-grade, multi-agent AI helpdesk system designed for automated class
 - **Predictive Analytics**: AI-driven volume forecasting for infrastructure capacity planning.
 - **RBAC & Security**: Tiered access for End-Users, Support Agents, and Admins.
 
+## 🌐 Live Demo
+- **Frontend (Vercel)**: [Loading SolveWise AI Frontend...](https://solvewise-ai.vercel.app)
+- **Backend (Render)**: [SolveWise AI API Alive ✅](https://solvewise-ai-backend.onrender.com)
+
 ## 🛠️ Tech Stack
 - **Frontend**: React 18, Tailwind CSS, Lucide Icons, Recharts, Axios.
 - **Backend**: FastAPI (Python 3.12), SQLAlchemy (Async), Claude 3.5 Sonnet (Vision & LLM).
