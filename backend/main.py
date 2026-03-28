@@ -45,19 +45,22 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Database initialization
-    await init_db()
-    print("Database initialized.")
-    # Build FAISS index from knowledge base
-    success = build_index()
-    if success:
-        print("RAG knowledge base ready.")
-    else:
-        print("RAG knowledge base building deferred (run generate_data.py first).")
+    # Setup - fail gracefully on Render to avoid crash loop
+    try:
+        await init_db()
+        print("Database initialized.")
+    except Exception as e:
+        print(f"DB Init Failed: {e}")
+
+    try:
+        success = build_index()
+        print(f"RAG Index: {'OK' if success else 'FAIL'}")
+    except Exception as e:
+        print(f"RAG Index Error: {e}")
     
-    # Start Proactive Incident Monitor
+    # Start background scheduler
     asyncio.create_task(monitor_major_incidents())
-    print("Background incident monitor started.")
+    print("Incident monitor started.")
     
     yield
     print("Shutting down.")
@@ -66,7 +69,7 @@ async def lifespan(app: FastAPI):
 # ─── App ──────────────────────────────────────────────────────────────────────
 
 app = FastAPI(
-    title="AI Helpdesk Classification API",
+    title="SolveWise AI: Intelligent Resolution Engine",
     description="Intelligent IT support ticket classification and resolution system",
     version="1.0.0",
     lifespan=lifespan,
