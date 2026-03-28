@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 // Use the Vite proxy defined in vite.config.js to avoid CORS issues
-const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000');
+// Use localhost for local dev, otherwise fallback to Render URL
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE = isLocal ? 'http://localhost:8000' : (import.meta.env.VITE_API_URL || 'https://solvewise-ai-backend.onrender.com');
 console.log('🚀 SolveWise Connectivity Check: Connecting to', API_BASE);
 
 const api = axios.create({
